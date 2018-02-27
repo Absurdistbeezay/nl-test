@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!--Firebase-->
+    <script src="https://www.gstatic.com/firebasejs/4.10.0/firebase.js"></script>
+
+    <script>
+  // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyAle0qtETlQfp9uJZGHa896Zbh1lTQzRn4",
+        authDomain: "lyricsform.firebaseapp.com",
+        databaseURL: "https://lyricsform.firebaseio.com",
+        projectId: "lyricsform",
+        storageBucket: "lyricsform.appspot.com",
+        messagingSenderId: "1093692190318"
+    };
+    firebase.initializeApp(config);
+
+</script>
+    <title>Lyrics</title>
+</head>
+<body>
+    <h1>Lyrics App</h1>
+    <button onclick={signInWithFacebook()}>Sign in With Facebook</button>
+    <button onclick={signOut()}>Sign Out</button>
+    <a href="/add">Add Song</a>
+
+    <h4 id="userTest"></h4>
+
+    <script src="./firebaseAuth.js">
+    
+    </script>
+</body>
+</html>
