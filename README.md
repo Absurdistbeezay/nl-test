@@ -11,7 +11,13 @@
 - CSS
 - Bootstrap 
 --- 
-To start: 
+
+From the working directory,
+```terminal
+npm install
+```
+
+To start in browser: 
 ```terminal
 node app.js
 ```
