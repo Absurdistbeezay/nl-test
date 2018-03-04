@@ -4,7 +4,7 @@ function signInWithFacebook(){
     firebase.auth()
     .signInWithPopup(facebookAuthProvider);
 
-    window.location = '/add';
+    // window.location = '/add';
 }
 
 function signOut(){
