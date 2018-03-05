@@ -1,0 +1,14 @@
+.button-inside{
+    position: relative;
+}
+#add{
+    position: absolute;
+    top:6px;
+    right: 0;
+    margin-right: 20px;
+    border:none;
+    background: rgb(181, 221, 240);
+    cursor: pointer;
+    padding: 1px 5px 1px 5px;
+    border-radius: 4px;
+}
