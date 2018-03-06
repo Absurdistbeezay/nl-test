@@ -2,7 +2,10 @@ function signInWithFacebook(){
     const facebookAuthProvider = new firebase.auth.FacebookAuthProvider();
 
     firebase.auth()
-    .signInWithPopup(facebookAuthProvider);
+    .signInWithPopup(facebookAuthProvider)
+    .then(()=>{
+        window.location.reload();
+    })
 
     // window.location = '/add';
 }
@@ -12,20 +15,26 @@ function signOut(){
     .auth()
     .signOut()
     .then(()=>{
-        console.log("You are signed out!");
+        window.location.reload();
     })
     .catch((error)=>{
         console.log(error);
     });
 }
-function checkLogin(){
-    const firebaseToken = localStorage.getItem('firebase:authUser:AIzaSyAle0qtETlQfp9uJZGHa896Zbh1lTQzRn4:[DEFAULT]');
-
-    if (firebaseToken === null){
-        console.log('you are logged out');
-    }else{
-        console.log('you are logged in!');
+firebase.auth().onAuthStateChanged(user=>{
+    const btn = document.getElementById('btnSignIn');
+    const btnSignout = document.getElementById('btnSignOut');
+    if(user){
+        console.log('Logged in!');
+       
+        btn.style.display = "none";
+        
     }
-}
+  if(!user){
+      console.log('Logged Out!');
+    
+      btnSignOut.style.display ="none";
+      
 
-checkLogin();
+  }
+})

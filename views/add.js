@@ -12,6 +12,16 @@ firebase.initializeApp(config);
 //global variable for database ref
 const lyricsRef = firebase.database().ref(`/pending_songs`);
 
+//redirect user
+firebase.auth().onAuthStateChanged((user)=>{
+    if(user){
+       //no nothing 
+    }
+    if(!user){
+        window.location = '/';
+    }
+})
+
 //listen submit
 document.getElementById('lyricsForm').addEventListener('submit', submitForm);
 

@@ -2,7 +2,8 @@ const express = require('express');
 const logger = require('morgan');
 const bodyParser = require('body-parser');
 const admin = require('firebase-admin');
-// const firebase = require('firebase');
+const firebase = require('firebase');
+// const firebaseMiddleWare = require('express-firebase-middleware');
 const serviceAccount = require('./lyricsform-firebase-adminsdk-qcutu-963367b477.json');
 
 
@@ -10,6 +11,8 @@ const firebaseAdmin = admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
     databaseURL: 'https://lyricsform.firebaseio.com'
 });
+
+const database = firebaseAdmin.database();
 
 
 const app = express();
@@ -28,27 +31,31 @@ app.use(bodyParser.urlencoded({extended:false}));
 
 app.use(logger('dev'));
 
-//Authentication middleware
-function isAuthenticated(req, res, next){
-    //check if user is logged in 
-    //if they are, redirect
-    //if not, send them to login page
-    // const user = firebase.auth().currentUser;
-
-    if(req.authenticated){
-      
-        return next();
-    }
-
-    res.redirect('/');
-    }
+// //Authentication middleware
+// const isAuthenticated = (req, res, next)=>{
+//     const user = firebase.auth().currentUser;
+//     if(user!=null){
+//         req.user = user;
+//         next();
+//     }else{
+//         res.redirect('/');
+//     }
+// }
 
 app.get('/', (req, res)=>{
     res.render('index.ejs');
 });
 
 app.get('/add', (req, res)=>{
-    res.render('add.ejs');
+    const artistRef = database.ref('/artists');
+    artistRef.once('value', (snapshot)=>{
+        const data = snapshot.val()
+        if(!data){
+            data={};
+        }
+        res.render('add.ejs', {artists: data});
+    })
+    
 });
 
 

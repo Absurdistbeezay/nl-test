@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!--Bootstrap-->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <!--Firebase-->
     <script src="https://www.gstatic.com/firebasejs/4.10.0/firebase.js"></script>
 
@@ -23,12 +25,15 @@
     <title>Lyrics</title>
 </head>
 <body>
+    <div class="container">
     <h1>Lyrics App</h1>
-    <button onclick={signInWithFacebook()}>Sign in With Facebook</button>
-    <button onclick={signOut()}>Sign Out</button>
-    <a href="/add">Add Song</a>
+    <hr>
+    <button class="btn btn-primary" id="btnSignIn" onclick={signInWithFacebook()}>Sign in With Facebook</button>
+    <button class="btn btn-primary" id="btnSignOut" onclick={signOut()}>Sign Out</button>
+    <a class="btn btn-danger" href="/add">Add Song</a>
 
     <h4 id="userTest"></h4>
+</div>
 
     <script src="./firebaseAuth.js">
     

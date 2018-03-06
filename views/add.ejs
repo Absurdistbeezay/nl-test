@@ -21,7 +21,7 @@
         <div class="form-group row">
             <label class="col-sm-3 col-form-label">Song Title</label>
             <div class="col-sm-9">
-                <input type="text" class="form-control" id="songTitle">
+                <input type="text" class="form-control" id="songTitle" required>
             </div>
         </div>
         <div class="form-group row">
@@ -32,10 +32,12 @@
             </div>
         <div class="form-group row btn-inside">
                 <label class="col-sm-3 col-form-label">Artist</label>
-                <div class="form-group col-sm-9">
-                    <input type="text" class="form-control" id="artist">
+                <div class="form-group col-sm-9 artist-input">
+                    <input type="text" class="typeahead form-control" id="artist">
                     <a id="add" onclick="addArtist()">Add</a>
+                    <div id="selectedArtist">Narayan Gopal</div>
                 </div>
+               
         </div>
         <div class="form-group row">
                 <label class="col-sm-3 col-form-label">Genre</label>
@@ -64,7 +66,7 @@
         <div class="form-group row">
                 <label class="col-sm-3 col-form-label">Lyrics</label>
                 <div class="col-sm-9">
-                    <textarea id="lyrics" cols="30" rows="6" class="form-control"></textarea>
+                    <textarea id="lyrics" cols="30" rows="6" class="form-control" required></textarea>
                 </div>
         </div>
         <div class="form-check form-group row">
@@ -79,6 +81,15 @@
         
 
     </form>
+    <!-- <div>
+        <% const keys = Object.keys(artists) %>
+        <% keys.forEach((key)=>{ %>
+      
+        <ul>
+            <%= artists[key].artistName %>
+        </ul>
+        <% }) %>
+    </div> -->
 </div>
 
 <script src="./add.js"></script>
