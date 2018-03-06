@@ -21,6 +21,19 @@ function signOut(){
         console.log(error);
     });
 }
+
+function addBtnClick(){
+    firebase.auth().onAuthStateChanged(user=>{
+        if(user){
+            window.location ='/add';
+        }
+        if(!user){
+            alert('Please login with Facebook Account!');
+            window.location = '/';
+        }
+    })
+}
+
 firebase.auth().onAuthStateChanged(user=>{
     const btn = document.getElementById('btnSignIn');
     const btnSignout = document.getElementById('btnSignOut');
