@@ -10,7 +10,7 @@ var config = {
 firebase.initializeApp(config);
 
 //global variable for database ref
-const lyricsRef = firebase.database().ref(`/pending_songs`);
+const lyricsRef = firebase.database().ref('/pending_songs');
 
 //redirect user
 firebase.auth().onAuthStateChanged((user)=>{
@@ -55,15 +55,15 @@ function submitForm(e){
         }     
       }); 
 
-
-    // const addedById = firebaseAuth.currentUser.displayName;
-    // const addedByName = getUsername();
-
     //reset form after submit
     document.getElementById('lyricsForm').reset();
 
     //alert user after submission
     alert('Thank you for submitting lyrics!');
+
+    if(document.getElementById('selectedArtist').style.display="block"){
+        document.getElementById('selectedArtist').style.display ="none";
+    }
 }
 
 //get form values function
@@ -132,6 +132,23 @@ function parseToHtml(lyricsContent){
     return splitContent.join('');
 }
 
+//add artist function
+function addArtist()
+{
+   
+    if(document.getElementById('artist').value===''){
+        alert('Add artist Name!');
+    }
+    else{
+        const selectedArtist = getInput('artist');
+        const selectedArtistInput = document.getElementById('selectedArtist');
+        
+        selectedArtistInput.innerHTML = selectedArtist;
+        selectedArtistInput.style.display = "block";
+        document.getElementById('artist').value = '';
+    }
+
+}
 
 // saveLyrics function
 function saveLyrics(name, albumName, artistName, genre, movieName, youtubeVideoId, content, hasCords, addedById, addedByName, dateCreated){
