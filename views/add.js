@@ -9,18 +9,22 @@ var config = {
 };
 firebase.initializeApp(config);
 
+//global variables
+const artistInput = document.getElementById('artist');
+const selectedArtistInput = document.getElementById('selectedArtist');
+
 //global variable for database ref
 const lyricsRef = firebase.database().ref('/pending_songs');
 
 //redirect user
 firebase.auth().onAuthStateChanged((user)=>{
     if(user){
-       //no nothing 
+       //do nothing 
     }
     if(!user){
         window.location = '/';
     }
-})
+});
 
 //listen submit
 document.getElementById('lyricsForm').addEventListener('submit', submitForm);
@@ -31,16 +35,15 @@ function submitForm(e){
     const name = getInput('songTitle');
     const albumName = getInput('album');
     const artistName = getInput('artist');
+    const artistName2 = getInput('selectedArtist');
+    console.log(artistName2);
     const genre = getInput('genre');
     const movieName = getInput('movieName');
     const youtubeVideoId = getInput('movieLink');
     let contentInput = getInput('lyrics');
     const content = parseToHtml(contentInput);
-    //test
-    console.log(content);
     const hasCords = checkBox('cords');
     const dateCreated = Math.floor(Date.now()/10);
-  
 
     //get user info 
     firebase.auth().onAuthStateChanged((currentUser)=> {
@@ -50,7 +53,7 @@ function submitForm(e){
          const addedByName = currentUser.displayName;
 
         //call saveLyrics function
-        saveLyrics(name, albumName, artistName, genre, movieName, youtubeVideoId, content, hasCords, addedById, addedByName, dateCreated);
+        saveLyrics(name, albumName, artistName, artistName2, genre, movieName, youtubeVideoId, content, hasCords, addedById, addedByName, dateCreated);
 
         }     
       }); 
@@ -61,8 +64,8 @@ function submitForm(e){
     //alert user after submission
     alert('Thank you for submitting lyrics!');
 
-    if(document.getElementById('selectedArtist').style.display="block"){
-        document.getElementById('selectedArtist').style.display ="none";
+    if(selectedArtistInput.style.display="block"){
+        selectedArtistInput.style.display ="none";
     }
 }
 
@@ -72,7 +75,6 @@ function getInput(id){
 }
 
 //checkbox value function
-
 function checkBox(id){
     if(document.getElementById(id).checked){
         return true;
@@ -80,85 +82,38 @@ function checkBox(id){
     else return false;
 }
 
-//parse content to HTML
-function parseToHtml(lyricsContent){
-
-    let splitContent = lyricsContent.split('');
-    let previousWasSpace =false;
-    let previousWasChord = false;
-    let previousWasSpecialLine = false;
-
-    for(let i = 0; i<splitContent.length; i++){
-        if(splitContent[i] === ' '){
-            if(previousWasSpace){
-                splitContent[i] = "&nbsp;";
-                previousWasSpace = false;
-                continue;
-            }
-            previousWasSpace = true;
-        }else{
-            previousWasSpace = false;
-        }
-        if(splitContent[i]==="`"){
-            previousWasChord = true;
-            splitContent[i] = `<font color='#CHORDCOLOR#'>`;
-        }
-        if(splitContent[i] ==="_"){
-            previousWasSpecialLine = true;
-            splitContent[i]= `<font color='#SPECIALCOLOR#'>`
-        }
-        switch(splitContent[i]){
-            case'\n':
-                if(previousWasChord){
-                    splitContent[i] = `</font><br/>`;
-                    previousWasChord = false;
-                }
-                else if(previousWasSpecialLine){
-                    splitContent[i]=`</font><br/>`;
-                }
-                else{
-                    splitContent[i] = `<br/>`;
-                }
-                
-                break;
-                case'\t':
-                splitContent[i]= "&nbsp; &nbsp; &nbsp;";
-                break;
-            default:
-            splitContent[i];
-            
-        }
-    }
-    return splitContent.join('');
-}
-
 //add artist function
 function addArtist()
 {
-   
+
     if(document.getElementById('artist').value===''){
-        alert('Add artist Name!');
+        alert('Add artist-1 name!');
     }
     else{
-        const selectedArtist = getInput('artist');
-        const selectedArtistInput = document.getElementById('selectedArtist');
-        
-        selectedArtistInput.innerHTML = selectedArtist;
+        const selectedArtist = getInput('artist');     
+        selectedArtistInput.innerHTML = selectedArtist + `<a id="closeBtn" onClick="removeArtist()"><i class="fas fa-window-close"></i></a>`;
         selectedArtistInput.style.display = "block";
         document.getElementById('artist').value = '';
     }
+}
 
+//remove artist function
+function removeArtist(){
+    selectedArtistInput.value = '';
+    selectedArtistInput.style.display ="none";
 }
 
 // saveLyrics function
-function saveLyrics(name, albumName, artistName, genre, movieName, youtubeVideoId, content, hasCords, addedById, addedByName, dateCreated){
+function saveLyrics(name, albumName, artistName, artistName2, genre, movieName, youtubeVideoId, content, hasCords, addedById, addedByName, dateCreated){
 
     const lyricsCollection = lyricsRef.push();
+    if(artistName2 != undefined){
 
     lyricsCollection.set({
        name,
        albumName,
        artistName,
+       artistName2,
        genre,
        movieName,
        youtubeVideoId,
@@ -168,5 +123,21 @@ function saveLyrics(name, albumName, artistName, genre, movieName, youtubeVideoI
        addedByName,
        dateCreated     
     });
-
 }
+else {
+    lyricsCollection.set({
+    name,
+    albumName,
+    artistName,
+    genre,
+    movieName,
+    youtubeVideoId,
+    content,
+    hasCords,
+    addedById,
+    addedByName,
+    dateCreated   
+});
+}
+}
+
