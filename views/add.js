@@ -1,11 +1,11 @@
 // Initialize Firebase
 var config = {
-    apiKey: "AIzaSyAle0qtETlQfp9uJZGHa896Zbh1lTQzRn4",
-    authDomain: "lyricsform.firebaseapp.com",
-    databaseURL: "https://lyricsform.firebaseio.com",
-    projectId: "lyricsform",
-    storageBucket: "lyricsform.appspot.com",
-    messagingSenderId: "1093692190318"
+    apiKey: 'AIzaSyAle0qtETlQfp9uJZGHa896Zbh1lTQzRn4',
+    authDomain: 'lyricsform.firebaseapp.com',
+    databaseURL: 'https://lyricsform.firebaseio.com',
+    projectId: 'lyricsform',
+    storageBucket: 'lyricsform.appspot.com',
+    messagingSenderId: '1093692190318'
 };
 firebase.initializeApp(config);
 
@@ -14,6 +14,7 @@ const artistInput = document.getElementById('artist');
 const selectedArtistInput = document.getElementById('selectedArtist');
 
 //global variable for database ref
+const artistRef = firebase.database().ref('artists');
 const lyricsRef = firebase.database().ref('/pending_songs');
 
 //redirect user
@@ -35,8 +36,7 @@ function submitForm(e){
     const name = getInput('songTitle');
     const albumName = getInput('album');
     const artistName = getInput('artist');
-    const artistName2 = getInput('selectedArtist');
-    console.log(artistName2);
+    const artistName2 = selectedArtistInput.textContent;
     const genre = getInput('genre');
     const movieName = getInput('movieName');
     const youtubeVideoId = getInput('movieLink');
@@ -52,8 +52,12 @@ function submitForm(e){
          const addedById = currentUser.uid;
          const addedByName = currentUser.displayName;
 
+         let arg = {
+            name, albumName, artistName, artistName2, genre, movieName, youtubeVideoId, content, hasCords, addedById, addedByName, dateCreated
+         }
+
         //call saveLyrics function
-        saveLyrics(name, albumName, artistName, artistName2, genre, movieName, youtubeVideoId, content, hasCords, addedById, addedByName, dateCreated);
+        saveLyrics(arg);
 
         }     
       }); 
@@ -64,8 +68,8 @@ function submitForm(e){
     //alert user after submission
     alert('Thank you for submitting lyrics!');
 
-    if(selectedArtistInput.style.display="block"){
-        selectedArtistInput.style.display ="none";
+    if(selectedArtistInput.style.display='block'){
+        selectedArtistInput.style.display ='none';
     }
 }
 
@@ -91,53 +95,40 @@ function addArtist()
     }
     else{
         const selectedArtist = getInput('artist');     
-        selectedArtistInput.innerHTML = selectedArtist + `<a id="closeBtn" onClick="removeArtist()"><i class="fas fa-window-close"></i></a>`;
-        selectedArtistInput.style.display = "block";
+        selectedArtistInput.innerHTML = selectedArtist + `<a id='closeBtn' onClick='removeArtist()'><i class='fas fa-window-close'></i></a>`;
+        selectedArtistInput.style.display = 'block';
         document.getElementById('artist').value = '';
     }
 }
 
 //remove artist function
 function removeArtist(){
-    selectedArtistInput.value = '';
-    selectedArtistInput.style.display ="none";
+    selectedArtistInput.textContent = '';
+    selectedArtistInput.style.display ='none';
 }
 
 // saveLyrics function
-function saveLyrics(name, albumName, artistName, artistName2, genre, movieName, youtubeVideoId, content, hasCords, addedById, addedByName, dateCreated){
+function saveLyrics(arg){
 
-    const lyricsCollection = lyricsRef.push();
-    if(artistName2 != undefined){
+    let lyrics = {
+        name: arg.name,
+        albumName: arg.albumName,
+        artistName: arg.artistName,
+        genre: arg.genre,
+        movieName: arg.movieName,
+        youtubeVideoId: arg.youtubeVideoId,
+        content: arg.content,
+        hasCords: arg.hasCords,
+        addedById: arg.addedById,
+        addedByName: arg.addedByName,
+        dateCreated: arg.dateCreated
+    }
 
-    lyricsCollection.set({
-       name,
-       albumName,
-       artistName,
-       artistName2,
-       genre,
-       movieName,
-       youtubeVideoId,
-       content,
-       hasCords,
-       addedById,
-       addedByName,
-       dateCreated     
-    });
-}
-else {
-    lyricsCollection.set({
-    name,
-    albumName,
-    artistName,
-    genre,
-    movieName,
-    youtubeVideoId,
-    content,
-    hasCords,
-    addedById,
-    addedByName,
-    dateCreated   
-});
-}
-}
+    if(arg.artistName2 !== ''){
+        lyrics['artistName2'] = arg.artistName2;
+    }
+
+   lyricsRef.push(lyrics);
+    
+    }
 

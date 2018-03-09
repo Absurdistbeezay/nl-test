@@ -6,8 +6,6 @@ function signInWithFacebook(){
     .then(()=>{
         window.location.reload();
     })
-
-    // window.location = '/add';
 }
 
 function signOut(){
