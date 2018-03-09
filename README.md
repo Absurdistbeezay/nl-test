@@ -31,10 +31,11 @@ node app.js
 - Artist names search feature with third-party widget called awesomplete.
 - Artists' data sent to client from server as options.
 - Created addArtist() function. (Needs to update more..)
-
+- Add close button into added artist div.
+- Store artists names as separate variables and send to firebase.
 
 ### TO DO:
-- Add close button and image into added artist div.
-- Store artists names as separate variables and send to firebase.
+- Add artist Id
+- Add artist image url
 
 
