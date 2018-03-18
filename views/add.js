@@ -9,14 +9,6 @@ var config = {
 };
 firebase.initializeApp(config);
 
-//global variables
-const artistInput = document.getElementById('artist');
-const selectedArtistInput = document.getElementById('selectedArtist');
-
-//global variable for database ref
-const artistRef = firebase.database().ref('artists');
-const lyricsRef = firebase.database().ref('/pending_songs');
-
 //redirect user
 firebase.auth().onAuthStateChanged((user)=>{
     if(user){
@@ -26,6 +18,18 @@ firebase.auth().onAuthStateChanged((user)=>{
         window.location = '/';
     }
 });
+
+//global variables
+const artistInput = document.getElementById('artist');
+const selectedArtistInput = document.getElementById('selectedArtist');
+
+//global variable for database ref
+const artistRef = firebase.database().ref('artists');
+const lyricsRef = firebase.database().ref('/pending_songs');
+
+
+
+
 
 //listen submit
 document.getElementById('lyricsForm').addEventListener('submit', submitForm);
@@ -73,6 +77,7 @@ function submitForm(e){
     }
 }
 
+
 //get form values function
 function getInput(id){
     return document.getElementById(id).value;
@@ -98,8 +103,29 @@ function addArtist()
         selectedArtistInput.innerHTML = selectedArtist + `<a id='closeBtn' onClick='removeArtist()'><i class='fas fa-window-close'></i></a>`;
         selectedArtistInput.style.display = 'block';
         document.getElementById('artist').value = '';
+
+        artistRef.orderByChild('name').equalTo(selectedArtist).on('value', (snapshot)=>{
+            snapshot.forEach((data)=>{
+                const artistID = data.key;
+                const imageURL = data.child('imageUrl').val();
+                console.log(artistID + ' ' + imageURL);
+            })
+        })
     }
 }
+//ARTIST DATA 
+ //TESTING
+artistRef.orderByValue().on('value', (snapshot)=>{
+  
+    snapshot.forEach((data)=>{
+        let artist = data.child('name').val();
+
+        document.getElementById('artistList').innerHTML += `<option value='${artist}'></option>`;
+    })
+})
+
+
+ //***TESTING END*/
 
 //remove artist function
 function removeArtist(){

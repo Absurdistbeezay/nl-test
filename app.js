@@ -47,14 +47,14 @@ app.get('/', (req, res)=>{
 });
 
 app.get('/add', (req, res)=>{
-    const artistRef = database.ref(`/artists`);
-    artistRef.once('value', (snapshot)=>{
-        const data = snapshot.val()
-        if(!data){
-            data={};
-        }
-        res.render('add.ejs', {artists: data});
-    })
+    // const artistRef = database.ref(`/artists`);
+    // artistRef.once('value', (snapshot)=>{
+    //     const data = snapshot.val()
+    //     if(!data){
+    //         data={};
+    //     }
+        // res.render('add.ejs', {artists: data});
+        res.render('add.ejs');
     
 });
 

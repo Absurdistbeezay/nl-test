@@ -41,20 +41,12 @@
         <div class="form-group row btn-inside">
                 <label class="col-sm-3 col-form-label">Artist</label>
                 <div class="form-group col-sm-9 artist-input">
-                    <input list="artistList" class="awesomplete typeahead form-control" id="artist" placeholder="Type to search artist...">
-                    <datalist id="artistList">
+                    <input class="awesomplete typeahead form-control" id="artist" list="artistList" placeholder="Type to search artist...">
+                    <datalist id="artistList">  
 
-                            <% const artistKeys = Object.keys(artists); %>
-                            
-                            <% artistKeys.forEach((key)=>{ %>
-                                
-                                <% imageUrl = artists[key].imageURL %>
-                                <option>
-                                    <%= artists[key].artistName %>
-                                </option>
-                               
-                            <% }); %>            
                     </datalist>
+                    
+
                     <a id="add" onclick="addArtist()">Add Next Artist</a>
                     <div id="selectedArtist"></div>
                         
@@ -93,7 +85,7 @@
         </div>
         <div class="form-group row">
                 <label for="cords" class="col-sm-3 col-form-label">Contain Chords?</label>
-            <div class="col-sm-4">
+            <div class="col-sm-4" id="chordDiv">
                 <input type="checkbox" id="cords" class="form-check-input col-sm-9">
             </div>
             
