@@ -149,7 +149,7 @@ Sub Header
         display:none;
     }
     .search-icon{
-        display: block;
+        display: block; 
     }
 }
 @media(min-width:1000px){
