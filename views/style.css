@@ -1,0 +1,49 @@
+.button-inside{
+    position: relative;
+}
+#add{
+    position: absolute;
+    top:6px;
+    right: 0;
+    margin-right: 20px;
+    border:none;
+    background: rgb(181, 221, 240);
+    cursor: pointer;
+    padding: 1px 5px 1px 5px;
+    border-radius: 4px;
+}
+.artist-input{
+    margin-bottom:0;
+}
+
+#selectedArtist{
+    display: none;
+    position: relative;
+    font-size: 12px;
+    border: 1px solid rgb(56, 96, 226);
+    border-radius: 4px;
+    color: rgb(116, 11, 11);
+    font-style: italic;
+    width: 120px;
+    text-align: center;
+    margin-top: 5px;
+    padding: 5px;
+}
+#closeBtn{
+    position: absolute;
+    right: 3px;
+    cursor: pointer;
+}
+#cords{
+    width:20px;
+    height:20px;
+    margin-left: 5px;
+    
+}
+
+@media(max-width:580px){
+    #chordDiv{
+        margin-bottom: 20px;
+        margin-left: 40px;
+    }
+}

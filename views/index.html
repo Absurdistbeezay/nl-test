@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!--Amita font-->
+    <link href="https://fonts.googleapis.com/css?family=Amita:400,700" rel="stylesheet">
+    <!--Bootstrap-->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <!--Firebase-->
+    <script src="https://www.gstatic.com/firebasejs/4.10.0/firebase.js"></script>
+    <link rel="stylesheet" href="index.css">
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyAle0qtETlQfp9uJZGHa896Zbh1lTQzRn4",
+            authDomain: "lyricsform.firebaseapp.com",
+            databaseURL: "https://lyricsform.firebaseio.com",
+            projectId: "lyricsform",
+            storageBucket: "lyricsform.appspot.com",
+            messagingSenderId: "1093692190318"
+        };
+        firebase.initializeApp(config);
+
+    </script>
+    <title>Lyrics</title>
+</head>
+
+<body>
+    <div class="container">
+        <!--Nav Bar-->
+        <nav class="navbar navbar-expand-sm navbar-primary bg-primary mb-3 nav-height main-nav container">
+          
+                <a class="navbar-brand" id="brand-logo" href="/">
+                    <img src="https://firebasestorage.googleapis.com/v0/b/flashy-84f3e.appspot.com/o/artists%2Fnepali_lyrics.png?alt=media&token=04b6f003-16b3-4ba0-9f67-212017cd4609"
+                        alt="">
+                </a>
+
+                <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <form class="form-inline my-2 my-lg-0 search-bar">
+                    <input type="text" class="form-control mr-sm-2" placeholder="Search Nepali Lyrics">
+                    <button class="btn btn-outline-light my-2 my-sm-0 text-white">Search</button>
+                </form>
+
+        </nav>
+        <!--Nav Bar Ends-->
+        <div class="sub-header">
+           <span id="searchSong">Search Songs:</span> 
+            <a href="">A</a>
+            <a href="">B</a>
+            <a href="">C</a>
+            <a href="">D</a>
+            <a href="">E</a>
+            <a href="">F</a>
+            <a href="">G</a>
+            <a href="">H</a>
+            <a href="">I</a>
+            <a href="">J</a>
+            <a href="">K</a>
+            <a href="">L</a>
+            <a href="">M</a>
+            <a href="">N</a>
+            <a href="">N</a>
+            <a href="">O</a>
+            <a href="">P</a>
+            <a href="">Q</a>
+            <a href="">R</a>
+            <a href="">S</a>
+            <a href="">T</a>
+            <a href="">U</a>
+            <a href="">V</a>
+            <a href="">W</a>
+            <a href="">X</a>
+            <a href="">Y</a>
+            <a href="">Z</a>
+        </div>
+        <div class="content-layout row">
+            <div class="sidebar col-md-4">
+                SIDEBAR
+                <hr>
+                Artist You may Like Container
+                <br>
+                Popular Artist Container
+                <div class="add-sign-buttons">
+                        <button class="btn btn-primary btn-sm" id="btnSignIn" onclick={signInWithFacebook()}>FB Login</button>
+        <button class="btn btn-primary btn-sm" id="btnSignOut" onclick={signOut()}>Sign Out</button>
+        <a class="btn btn-danger add-btn btn-sm" onclick="addBtnClick()">Add Song</a>
+                </div>
+            </div>
+          
+            <div class="main-content col-md-8">
+
+                  <!--About Section-->
+                <div class="about">
+                    <h3>About Nepali Lyrics</h3>
+                    <p>Nepali Lyrics is the biggest Nepali songs collection network with wide variety of Nepali songs. </p>
+                    <hr>
+                    <p>Whether you are trying to listen to your favorite Nepali songs, trying to sing along or trying to play
+                        along, Nepali Lyrics is the right app for you! Sing along with your favorite artist with on-screen
+                        lyrics and video.</p>
+
+                </div>
+                
+                <div class="container lyrics-section">
+                    <div class="song-info card">
+                        <div class="card-body text-center">
+                               <p><img class="img-fluid"
+                                src="https://yt3.ggpht.com/-817u5f0RIYs/AAAAAAAAAAI/AAAAAAAAAAA/XMiygeVwJiI/s288-mo-c-c0xffffffff-rj-k-no/photo.jpg" alt="nitesh"></p> 
+                                <h4 class="card-title">Gedai Jasto Jindagi</h4>
+                                <p class="card-text">Nitesh Jung Kunwar</p>
+                                <div class="artist-info">
+                                    Short Bio: Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ex, perspiciatis ea eaque harum amet qui non totam unde reiciendis quibusdam.
+                                </div>
+                        </div>
+                        
+                        
+                    </div>
+                    <div class="lyrics-container">
+                        <p>
+                            धेरै "जस्तो साथी अष्ट्रेलिया, कोही चाइना, कोही जापान मलेसिया
+                            <br/>दाइ भने मेरो आम्ष्टर्डाममा अनि दाइको बुढी भने टोटनह्याममा
+                            <br/>सार्‍है गाह्रो छ भन्छन् सबैजना, हेर कोही नि फर्क्या होइन,
+                            <br/>माकस्सम ढाट्या होइन तर आफु भने अहिलेसम्म इन्डिया नि गाको छैन ।
+                            <br/>
+                            <br/>ह्म्म्म गेडैजस्तो जिन्दगी, गेडै भयो जिन्दगी
+                            <br/>
+                            <br/>जोडीहरु अपलोड गर्छन् फोटो एक अर्कालाई च्यापेको
+                            <br/>आफू भने हात मात्रै जाबो छुदा मोरीले झण्डै न्याक्देको
+                            <br/>स्त्रिलिंगको कमी छैन तर भाग्य भने मेरो चम्क्या होइन
+                            <br/>माकस्सम ढाट्या होइन मैले अहिलेसम्म राम्रोसँग मोइ पनि खाको छैन
+                            <br/>
+                            <br/>गेडैजस्तो जिन्दगी, गेडै भयो जिन्दगी
+                            <br/>गेडैजस्तो जिन्दगी
+                            <br/>
+                            <br/>
+                            <br/>मेरो नि इच्छा छ एउटा एकदिन ठूलो मान्छे बन्ने,
+                            <br/>जन्म दिने मेरो आमा बउको त्यो सपना पूरा गर्ने,
+                            <br/>तर हुने कहिले, आफू त अल्लारे जहिले,
+                            <br/>काम पाउँथे होला राम्रै ठाँउमा त्यति पढ्या छैन मैले
+                            <br/>यो सब त मान्छेको एउटा सोचको भ्रम मात्र हो मित्र,
+                            <br/>जे लेख्या छ त्यही हुन्छ, अब डर केहीको छैन मन भित्र
+                            <br/>
+                            <br/>तर गफ गफ गफ, गफै त हो ! पसिना गनाए नि मन सफै त हो
+                            <br/>छाडी जानू छ सबै एकदिन यो जिन्दगानी एउटा गफै त हो
+                            <br/>गफ गफ गफ गफै त हो, पसिना गनाए नि मन सफै त हो
+                            <br/>छाडी जानू छ सबै एकदिन यो जिन्दगानी एउटा गफै त हो
+                            <br/>
+                            <br/>गेडै भयो जिन्दगी
+                            <br/>
+                        </p>
+                    </div>
+                    <div class="embed-responsive embed-responsive-16by9 videos-container">
+                            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/gEcK8U_QenI" allowfullscreen></iframe>
+                    </div>
+
+
+                </div>
+                <div class="fb-comments" data-href="https://developers.facebook.com/docs/plugins/comments#configurator" data-numposts="5"></div>
+            </div>
+          
+        </div>
+    
+
+        <h4 id="userTest"></h4>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
+        crossorigin="anonymous"></script>
+    <script src="./firebaseAuth.js">
+
+    </script>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.12&appId=120424578652710&autoLogAppEvents=1';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+    <style>
+        .add-btn {
+            color: #fff !important;
+        }
+    </style>
+</body>
+
+</html>

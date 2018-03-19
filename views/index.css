@@ -1,0 +1,156 @@
+.main-nav{
+    position: relative;
+    margin-bottom: 4px !important;
+}
+#brand-logo img{
+    width: 80px;
+    position: absolute;
+    left:10px;
+    top: 0;
+}
+.nav-height{
+    height: 65px;
+}
+
+.search-bar{
+    position: absolute;
+    right: 10px;
+    top: 8px;
+
+}
+.search-bar button:hover{
+    color: #333 !important;
+}
+.search-bar input{
+    width: 300px !important;
+}
+/*
+Sub Header
+*/
+.sub-header{
+    background: #888;
+    padding: 3px;
+    margin-top: 0;
+    color: #d7e6f0;
+    text-align: right;
+  
+}
+.sub-header a{
+    text-decoration: none;
+    color: #fff;
+    padding-right: 3px;
+    padding-left: 3px;
+    
+}
+.sub-header a:hover{
+    background:rgb(245, 242, 242);
+    color: #444;
+    border-radius: 2px;
+}
+#searchSong{
+    float: left;
+    margin-left: 6px;
+}
+/*Content Layout*/
+
+.content-layout{
+    margin-top: 20px; 
+    justify-content: space-between;
+  
+}
+.main-content{
+    flex: 2;
+    order:2;
+    padding-left: 4px !important;
+}
+
+/*Artist info*/
+.card-body img{
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+}
+.song-info{
+    background: #e8e9e9;
+}
+/* Lyrics Section*/
+.lyrics-section{
+    background: #eef0f1;
+    border: 1px solid #e5e7e7;
+    margin-top: 20px;
+    padding: 8px;
+    border-radius: 4px;
+}
+.lyrics-container{
+    border: 1px solid #727171;
+    border-radius: 4px;
+    padding: 8px;
+    margin-top: 12px;
+}
+.sidebar{
+    flex:1;
+    order:1;
+    border-right: 1px #a5a4a4 solid;
+    margin-right: 4px;
+    padding: 8px;
+    width: 320px;
+    
+
+}
+
+/*About section*/
+.about h3{
+    font-family: 'Amita', cursive;
+    color: #8f0303;
+    
+}
+.about{
+    border: 2px solid #727171;
+    padding: 8px;
+    background: #d7e6f0;
+    border-radius: 4px;
+    box-shadow: 5px 5px 4px 4px #ebe8e8;
+}
+
+
+
+
+@media(max-width:750px){
+    .search-bar input{
+        width: 180px !important;
+        margin-right: 20px;        
+    }
+    .sidebar{
+        display:none;
+
+    }
+    .sub-header{
+        display:none;
+    }
+    .content-layout{
+        display: block;
+    }
+}
+@media(max-width:420px){
+    .search-bar input{
+        width: 160px !important;
+        margin-right: 20px;        
+    }
+}
+@media(min-width:1000px){
+    .search-bar{
+        position: absolute;
+        right: 120px;
+        top: 12px;
+    
+    }
+    .search-bar input{
+        width: 500px !important;   
+        
+    }
+    
+}
+
+
+
+
