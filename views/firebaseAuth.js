@@ -23,7 +23,7 @@ function signOut(){
 function addBtnClick(){
     firebase.auth().onAuthStateChanged(user=>{
         if(user){
-            window.location ='/views/add.html';
+            window.location ='nl-test/views/add.html';
         }
         if(!user){
             alert('Please login with Facebook Account!');
