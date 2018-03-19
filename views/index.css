@@ -24,6 +24,15 @@
 .search-bar input{
     width: 300px !important;
 }
+.search-icon{
+    text-decoration: none;
+    cursor: pointer;
+    display: none;
+
+}
+.search-glass{
+    color:#fff;
+}
 /*
 Sub Header
 */
@@ -133,8 +142,14 @@ Sub Header
 }
 @media(max-width:420px){
     .search-bar input{
-        width: 160px !important;
+        width: 130px !important;
         margin-right: 20px;        
+    }
+    .search-bar button{
+        display:none;
+    }
+    .search-icon{
+        display: block;
     }
 }
 @media(min-width:1000px){
