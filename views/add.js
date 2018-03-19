@@ -15,7 +15,7 @@ firebase.auth().onAuthStateChanged((user)=>{
        //do nothing 
     }
     if(!user){
-        window.location = '/';
+        window.location = '/nl-test';
     }
 });
 
