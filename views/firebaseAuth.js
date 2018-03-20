@@ -23,13 +23,10 @@ function signOut(){
 function addBtnClick(){
     firebase.auth().onAuthStateChanged(user=>{
         if(user){
-<<<<<<< HEAD
             // //dev mode
             // window.location ='/add.html';
 
             //deployed mode
-=======
->>>>>>> d82c463ecbe9a7ba702f8608047fe05d38da3ab6
             window.location ='views/add.html';
         }
         if(!user){
