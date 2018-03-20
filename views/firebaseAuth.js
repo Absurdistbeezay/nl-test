@@ -23,11 +23,11 @@ function signOut(){
 function addBtnClick(){
     firebase.auth().onAuthStateChanged(user=>{
         if(user){
-            window.location ='/views/add.html';
+            window.location ='/add.html';
         }
         if(!user){
             alert('Please login with Facebook Account!');
-            window.location = '/nl-test/';
+            window.location = '/';
         }
     })
 }

@@ -10,7 +10,9 @@
     <!--Fontawesome-->
     <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/solid.js" integrity="sha384-+Ga2s7YBbhOD6nie0DzrZpJes+b2K1xkpKxTFFcx59QmVPaSA8c7pycsNaFwUK6l" crossorigin="anonymous"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/fontawesome.js" integrity="sha384-7ox8Q2yzO/uWircfojVuCQOZl+ZZBg2D2J5nkpLqzH1HY0C1dHlTKIbpRz/LG23c" crossorigin="anonymous"></script>
-    <!--Bootstrap-->
+    <!-- Bootstrap Font Awesome-->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous"> -->
+    <!--Bootstrap -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous">
     <!--Firebase-->
@@ -36,8 +38,8 @@
     <div class="container">
         <!--Nav Bar-->
         <nav class="navbar navbar-expand-sm navbar-primary bg-primary mb-3 nav-height main-nav container">
-          
-                <a class="navbar-brand" id="brand-logo" href="/nl-test/">
+            
+                <a class="navbar-brand" id="brand-logo" href="/">
                     <img src="https://firebasestorage.googleapis.com/v0/b/flashy-84f3e.appspot.com/o/artists%2Fnepali_lyrics.png?alt=media&token=04b6f003-16b3-4ba0-9f67-212017cd4609"
                         alt="">
                 </a>
@@ -84,25 +86,76 @@
             <a href="">Y</a>
             <a href="">Z</a>
         </div>
+       
+        <!--FB LOGIN-->
+        <div class="add-sign-buttons">
+            <button class="btn btn-primary btn-sm btns fb-btn" id="btnSignIn" onclick={signInWithFacebook()}>FB Login</button>
+<button class="btn btn-primary btn-sm btns fb-btn" id="btnSignOut" onclick={signOut()}>Sign Out</button>
+<a class="btn btn-danger add-btn btn-sm btns" onclick="addBtnClick()">Add Song</a>
+    </div>
+
+        <!--All Content Layout Container-->
         <div class="content-layout row">
             <div class="sidebar col-md-4">
-                SIDEBAR
+                <form class="form-inline row sidebar-form input-group input-group-sm">
+                    <input type="text" class="form-control col-sm-8 input-sm" placeholder="Search Nepali Lyrics">
+                    <button class="btn btn-outline-light col-sm-2 text-dark"><i class="fas fa-search search-glass-sidebar"></i></button>
+                    <div class="d-flex flex-row justify-content-between">
+                        <div class="form-check">
+                            <label class="form-check-label p-1">
+                                <input type="radio" class="form-check-input" value="option1" checked>
+                                Lyrics
+                            </label>
+                        </div>
+                        <div class="form-check p-1">
+                            <label class="form-check-label">
+                                <input type="radio" class="form-check-input" value="option1">
+                                Artists
+                            </label>
+                        </div>
+                        <div class="form-check p-1">
+                            <label class="form-check-label">
+                                <input type="radio" class="form-check-input" value="option1">
+                                Movies
+                            </label>
+                        </div>
+                    </div>
+                </form>
                 <hr>
-                Artist You may Like Container
-                <br>
-                Popular Artist Container
-                <div class="add-sign-buttons">
-                        <button class="btn btn-primary btn-sm" id="btnSignIn" onclick={signInWithFacebook()}>FB Login</button>
-        <button class="btn btn-primary btn-sm" id="btnSignOut" onclick={signOut()}>Sign Out</button>
-        <a class="btn btn-danger add-btn btn-sm" onclick="addBtnClick()">Add Song</a>
+                <div class="popular-artists">
+                <h4 class="amita-font">Popular Artists</h4>
+                <ul class="popular-artists-list">
+                    <li>1. Narayan Gopal</li>
+                    <li>2. Amrit Gurung</li>
+                    <li>3. Nitesh Jung Kunwar</li>
+                    <li>4. Deepak Kharel</li>
+                    <li>5. Bam Bahadur Karki</li>
+                    <li>6. Meena Niraula</li>
+                    <li>7. Kali Prasad Baskota</li>
+                    <li>8. Nati Kaji </li>
+                </ul>
                 </div>
+                <div class="popular-artists">
+                    <h4 class="amita-font">Artists You May Like</h4>
+                    <ul class="popular-artists-list">
+                        <li>1. Narayan Gopal</li>
+                        <li>2. Amrit Gurung</li>
+                        <li>3. Nitesh Jung Kunwar</li>
+                        <li>4. Deepak Kharel</li>
+                        <li>5. Bam Bahadur Karki</li>
+                        <li>6. Meena Niraula</li>
+                        <li>7. Kali Prasad Baskota</li>
+                        <li>8. Nati Kaji </li>
+                    </ul>
+                    </div>
+          
             </div>
           
             <div class="main-content col-md-8">
 
                   <!--About Section-->
                 <div class="about">
-                    <h3>About Nepali Lyrics</h3>
+                    <h3 class="amita-font">About Nepali Lyrics</h3>
                     <p>Nepali Lyrics is the biggest Nepali songs collection network with wide variety of Nepali songs. </p>
                     <hr>
                     <p>Whether you are trying to listen to your favorite Nepali songs, trying to sing along or trying to play
@@ -170,8 +223,6 @@
           
         </div>
     
-
-        <h4 id="userTest"></h4>
     </div>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
@@ -183,6 +234,7 @@
 
     </script>
 
+<!--FB Script-->
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];

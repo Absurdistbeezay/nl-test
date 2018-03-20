@@ -1,6 +1,7 @@
 .main-nav{
     position: relative;
     margin-bottom: 4px !important;
+    background: #3b5998 !important;
 }
 #brand-logo img{
     width: 80px;
@@ -33,6 +34,38 @@
 .search-glass{
     color:#fff;
 }
+/*SIDEBAR*/
+.sidebar-form{
+    font-size: 14px;
+}
+.sidebar-form input{
+    font-size: 14px;
+}
+
+.search-glass-sidebar{
+    color: #333;
+}
+
+.btns{
+    padding-top: 2px;
+    padding-bottom: 2px;
+    font-size: 12px;
+}
+.fb-btn{
+    background: #3b5998;
+}
+li{
+    list-style: none;
+}
+.popular-artists-list{
+    padding-left: 2px;
+}
+.popular-artists{
+    border: 2px solid #afafaf;
+    padding: 4px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+}
 /*
 Sub Header
 */
@@ -52,7 +85,7 @@ Sub Header
     
 }
 .sub-header a:hover{
-    background:rgb(245, 242, 242);
+    background:#f5f2f2;
     color: #444;
     border-radius: 2px;
 }
@@ -95,6 +128,7 @@ Sub Header
     border-radius: 4px;
     padding: 8px;
     margin-top: 12px;
+    margin-bottom: 8px;
 }
 .sidebar{
     flex:1;
@@ -103,14 +137,17 @@ Sub Header
     margin-right: 4px;
     padding: 8px;
     width: 320px;
-    
 
+}
+.videos-container{
+    border-radius: 4px;
 }
 
 /*About section*/
-.about h3{
+.amita-font{
     font-family: 'Amita', cursive;
     color: #8f0303;
+    border-bottom: 1px solid #888;
     
 }
 .about{
@@ -122,8 +159,7 @@ Sub Header
 }
 
 
-
-
+/*Media Queries*/
 @media(max-width:750px){
     .search-bar input{
         width: 180px !important;
@@ -146,7 +182,7 @@ Sub Header
         margin-right: 20px;        
     }
     .search-bar button{
-        display:none;
+        display:none; 
     }
     .search-icon{
         display: block;
