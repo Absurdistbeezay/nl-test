@@ -135,8 +135,8 @@ function artistInfo(artistName) {
     .equalTo(artistName)
     .on("value", snapshot => {
       snapshot.forEach(data => {
-        artistInfos.push(data.key);
-        artistInfos.push(data.child("imageUrl").val());
+        artistArr.push(data.key);
+        artistArr.push(data.child("imageUrl").val());
       });
     });
   return artistArr;
