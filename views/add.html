@@ -24,25 +24,26 @@
 
     <div class="container">
          <!--Nav Bar-->
-         <nav class="navbar navbar-expand-sm navbar-primary bg-primary mb-3 nav-height">
-                <div class="container">
-                    <a class="navbar-brand" id="brand-logo" href="/">
-                        <img src="https://firebasestorage.googleapis.com/v0/b/flashy-84f3e.appspot.com/o/artists%2Fnepali_lyrics.png?alt=media&token=04b6f003-16b3-4ba0-9f67-212017cd4609"
-                            alt="">
-                    </a>
-    
-                    <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-    
-                    <form class="form-inline my-2 my-lg-0 search-bar">
-                        <input type="text" class="form-control mr-sm-2" placeholder="Search Nepali Lyrics">
-                        <button class="btn btn-outline-light my-2 my-sm-0 text-white">Search</button>
-                    </form>
-    
-                </div>
-            </nav>
-            <!--Nav Bar Ends-->
+        <!--Nav Bar-->
+        <nav class="navbar navbar-expand-sm navbar-primary bg-primary mb-3 nav-height main-nav container">
+            
+            <a class="navbar-brand" id="brand-logo" href="https://absurdistbeezay.github.io/nl-test">
+                <img src="https://firebasestorage.googleapis.com/v0/b/flashy-84f3e.appspot.com/o/artists%2Fnepali_lyrics.png?alt=media&token=04b6f003-16b3-4ba0-9f67-212017cd4609"
+                    alt="">
+            </a>
+
+            <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <form class="form-inline my-2 my-lg-0 search-bar">
+                <input type="text" class="form-control mr-sm-2" placeholder="Search Nepali Lyrics">
+                <button class="btn btn-outline-light my-2 my-sm-0 text-white">Search</button>
+                <a class="search-icon"><i class="fas fa-search search-glass"></i></a>
+            </form>
+
+    </nav>
+    <!--Nav Bar Ends-->
     <h1>Add Songs</h1>
     <hr>
 
@@ -63,7 +64,7 @@
         <div class="form-group row btn-inside">
                 <label class="col-sm-3 col-form-label">Artist</label>
                 <div class="form-group col-sm-9 artist-input">
-                    <input class="awesomplete typeahead form-control" id="artist" list="artistList" placeholder="Type to search artist...">
+                    <input class="form-control" id="artist" list="artistList" placeholder="Type to search artist...">
                     <datalist id="artistList">  
 
                     </datalist>
