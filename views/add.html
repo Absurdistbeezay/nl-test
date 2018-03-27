@@ -80,10 +80,22 @@
                 <label class="col-sm-3 col-form-label">Genre</label>
                 <div class="col-sm-9">
                     <select class="custom-select" id="genre">
-                        <option selected>Choose...</option>
+                        <option selected>None</option>
                         <option value="folk">Folk</option>
                         <option value="pop">Pop</option>
                         <option value="rock">Rock</option>
+                        <option value="comedy">Comedy</option>
+                        <option value="gajal">Gajal</option>
+                        <option value="hip-hop">Hip Hop</option>
+                        <option value="lok-dohori">Lok Dohori</option>
+                        <option value="adhunik">Adhunik</option>
+                        <option value="movie">Movie</option>
+                        <option value="oldies">Oldies</option>
+                        <option value="patriotic">Patriotic</option>
+                        <option value="rap">Rap</option>
+                        <option value="remix">Remix</option>
+                        <option value="romantic">Romantic</option>
+                        <option value="sentimental">Sentimental</option>
                     </select>
                 </div>
                 
@@ -116,9 +128,20 @@
         <div class="form-group row">
                 <button type="submit" class="btn btn-primary btn-lg btn-block">Submit</button>
         </div>  
+        <div class="form-group row">
+            <a onclick="previewLyrics()" class="btn btn-warning btn-block">Preview Lyrics</a>
+        </div>
         
 
     </form>
+    <div id="previewContainer">
+        <div id="songDetail">
+            
+        </div>
+        <div id="lyricsContainer">
+
+        </div>
+    </div>
     
    
 </div>

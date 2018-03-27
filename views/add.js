@@ -185,3 +185,6 @@ function saveLyrics(arg) {
 
   lyricsRef.push(lyrics);
 }
+
+//preview Lyrics 
+
