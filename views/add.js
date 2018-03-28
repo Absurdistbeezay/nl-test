@@ -87,7 +87,9 @@ function submitForm(e) {
   if ((selectedArtistInput.style.display = "block")) {
     selectedArtistInput.style.display = "none";
   }
+  location.reload();
 }
+
 
 //get form values function
 function getInput(id) {
@@ -187,4 +189,40 @@ function saveLyrics(arg) {
 }
 
 //preview Lyrics 
+
+function previewLyrics(){
+  
+  const name = getInput("songTitle");
+  const lyrics = getInput('lyrics');
+  const parsedLyrics = parseToHtml(lyrics);
+  const artistName = getInput("artist");
+  let artistInfoArr = artistInfo(artistName);
+  document.getElementById('myModal').innerHTML = `
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+      <h5 class="modal-title">${name}</h5> 
+      <button class="close" data-dismiss="modal">&times;</button> 
+    </div>
+    <div class="modal-body">
+      <div class="row">
+     
+      <img id="artistImage" style="width:40px; height: 40px; border-radius:50%; margin-left: 10px; margin-right: 8px; margin-bottom:5px;" src="${artistInfoArr[1]}"/>
+      <h6 id="artistNameModal">${artistName}</h6>
+     
+      </div>
+      <hr/>
+      <div id="lyricsPreviewContainer">
+        ${parsedLyrics}
+      </div>
+    
+    </div>
+    <div class="modal-footer">
+    <button type="submit" class="btn btn-primary">Submit Lyrics</button>
+      <button class="btn btn-secondary" data-dismiss="modal">Back</button>
+    </div>
+    </div>
+    </div>`
+  
+}
 

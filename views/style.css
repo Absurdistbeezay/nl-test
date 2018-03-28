@@ -40,6 +40,16 @@
     margin-left: 5px;
     
 }
+#lyricsPreviewContainer{
+    border: 1px solid #7c7c7c;
+    padding: 8px;
+    border-radius: 5px;
+}
+#artistNameModal{
+    position: absolute;
+    left: 60px;
+    top: 25px;
+}
 
 @media(max-width:580px){
     #chordDiv{
