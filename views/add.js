@@ -38,8 +38,20 @@ function submitForm(e) {
   const albumName = getInput("album");
   const artistName = getInput("artist");
   let artistInfoArr = artistInfo(artistName);
-  const artistId = artistInfoArr[0];
-  const artistImageUrl = artistInfoArr[1];
+  let artistId = '';
+  if(artistInfoArr[0]==undefined){
+   artistId = 'N/A';
+  }
+  else{
+    artistId = artistInfoArr[0];
+  }
+  
+  let artistImageUrl = '';
+  if(artistInfoArr[1]== undefined){
+    artistImageUrl = 'https://firebasestorage.googleapis.com/v0/b/flashy-84f3e.appspot.com/o/artists%2Fnepali_lyrics.png?alt=media&token=04b6f003-16b3-4ba0-9f67-212017cd4609';
+  }else{
+    artistImageUrl = artistInfoArr[1];
+  }
   const artistName2 = selectedArtistInput.textContent;
   const genre = getInput("genre");
   const movieName = getInput("movieName");
@@ -141,8 +153,12 @@ function artistInfo(artistName) {
         artistArr.push(data.child("imageUrl").val());
       });
     });
+  if(artistArr === []){
+    return artistName;
+  }
   return artistArr;
 }
+
 
 //Artist options
 artistRef.orderByValue().on("value", snapshot => {
@@ -197,6 +213,13 @@ function previewLyrics(){
   const parsedLyrics = parseToHtml(lyrics);
   const artistName = getInput("artist");
   let artistInfoArr = artistInfo(artistName);
+  let artistImage = '';
+  if(artistInfoArr[1] == undefined){
+    artistImage = 'https://firebasestorage.googleapis.com/v0/b/flashy-84f3e.appspot.com/o/artists%2Fnepali_lyrics.png?alt=media&token=04b6f003-16b3-4ba0-9f67-212017cd4609';
+  }
+  else{
+    artistImage = artistInfoArr[1];
+  }
   document.getElementById('myModal').innerHTML = `
   <div class="modal-dialog">
     <div class="modal-content">
@@ -207,7 +230,7 @@ function previewLyrics(){
     <div class="modal-body">
       <div class="row">
      
-      <img id="artistImage" style="width:40px; height: 40px; border-radius:50%; margin-left: 10px; margin-right: 8px; margin-bottom:5px;" src="${artistInfoArr[1]}"/>
+      <img id="artistImage" style="width:40px; height: 40px; border-radius:50%; margin-left: 10px; margin-right: 8px; margin-bottom:5px;" src="${artistImage}"/>
       <h6 id="artistNameModal">${artistName}</h6>
      
       </div>
