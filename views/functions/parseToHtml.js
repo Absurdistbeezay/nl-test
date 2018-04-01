@@ -19,7 +19,7 @@ function parseToHtml(lyricsContent){
         }
         if(splitContent[i]==="`"){
             previousWasChord = true;
-            splitContent[i] = `<font color='#CHORDCOLOR#'>`;
+            splitContent[i] = `<font color='#e84118'>`;
         }
         if(splitContent[i] ==="_"){
             previousWasSpecialLine = true;

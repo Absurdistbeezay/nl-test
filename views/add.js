@@ -210,6 +210,7 @@ function previewLyrics(){
   
   const name = getInput("songTitle");
   const lyrics = getInput('lyrics');
+  const genre = getInput('genre');
   const parsedLyrics = parseToHtml(lyrics);
   const artistName = getInput("artist");
   let artistInfoArr = artistInfo(artistName);
@@ -220,7 +221,14 @@ function previewLyrics(){
   else{
     artistImage = artistInfoArr[1];
   }
-  document.getElementById('myModal').innerHTML = `
+
+ if((name && lyrics && artistName)==''){
+   alert('Please fill the fields first!');
+
+ }
+ else{
+  document.getElementById('previewContainer').innerHTML = `
+  <div class="modal" id="myModal">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -235,17 +243,29 @@ function previewLyrics(){
      
       </div>
       <hr/>
-      <div id="lyricsPreviewContainer">
+      <div>Genre: <font color='#341f97'>${genre}</font></div>
+      <hr/>
+      <div id="lyricsPreviewContainer" class="unselectable">
         ${parsedLyrics}
       </div>
     
     </div>
     <div class="modal-footer">
     <button type="submit" class="btn btn-primary">Submit Lyrics</button>
-      <button class="btn btn-secondary" data-dismiss="modal">Back</button>
+    <button class="btn btn-secondary" data-dismiss="modal">Back</button>
     </div>
     </div>
-    </div>`
+    </div>
+    </div>
+   `
+ }
+  
+
+
   
 }
+
+
+
+
 
