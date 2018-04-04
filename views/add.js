@@ -215,54 +215,76 @@ function previewLyrics(){
   const artistName = getInput("artist");
   let artistInfoArr = artistInfo(artistName);
   let artistImage = '';
-  if(artistInfoArr[1] == undefined){
-    artistImage = 'https://firebasestorage.googleapis.com/v0/b/flashy-84f3e.appspot.com/o/artists%2Fnepali_lyrics.png?alt=media&token=04b6f003-16b3-4ba0-9f67-212017cd4609';
-  }
-  else{
-    artistImage = artistInfoArr[1];
-  }
+  const youtubeLink = getInput('movieLink');
+ 
 
- if((name && lyrics && artistName)==''){
-   alert('Please fill the fields first!');
+  firebase.auth().onAuthStateChanged(currentUser => {
+    if (currentUser) {
+      const userName = currentUser.displayName;
 
- }
- else{
-  document.getElementById('previewContainer').innerHTML = `
-  <div class="modal" id="myModal">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-      <h5 class="modal-title">${name}</h5> 
-      <button class="close" data-dismiss="modal">&times;</button> 
-    </div>
-    <div class="modal-body">
-      <div class="row">
-     
-      <img id="artistImage" style="width:40px; height: 40px; border-radius:50%; margin-left: 10px; margin-right: 8px; margin-bottom:5px;" src="${artistImage}"/>
-      <h6 id="artistNameModal">${artistName}</h6>
-     
-      </div>
-      <hr/>
-      <div>Genre: <font color='#341f97'>${genre}</font></div>
-      <hr/>
-      <div id="lyricsPreviewContainer" class="unselectable">
-        ${parsedLyrics}
-      </div>
+      if(artistInfoArr[1] == undefined){
+        artistImage = 'https://firebasestorage.googleapis.com/v0/b/flashy-84f3e.appspot.com/o/artists%2Fnepali_lyrics.png?alt=media&token=04b6f003-16b3-4ba0-9f67-212017cd4609';
+      }
+      else{
+        artistImage = artistInfoArr[1];
+      }
     
-    </div>
-    <div class="modal-footer">
-    <button type="submit" class="btn btn-primary">Submit Lyrics</button>
-    <button class="btn btn-secondary" data-dismiss="modal">Back</button>
-    </div>
-    </div>
-    </div>
-    </div>
-   `
- }
-  
+     if((name && lyrics && artistName)==''){
+       alert('Please fill the fields first!');
+    
+     }
+     else{
+      document.getElementById('previewContainer').innerHTML = `
+      <div class="modal" id="myModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+          <h5 class="modal-title">${name}</h5> 
+          <button class="close" data-dismiss="modal">&times;</button> 
+        </div>
+        <div class="modal-body">
+          <div class="row">
+         
+          <img id="artistImage" style="width:40px; height: 40px; border-radius:50%; margin-left: 10px; margin-right: 8px; margin-bottom:5px;" src="${artistImage}"/>
+          <font color='#341f97' id="artistNameModal">${artistName}</font>
+         
+          </div>
+          <hr/>
+          <div class="mb-4">Genre: <font color='#341f97'>${genre}</font></div>
+          <hr/>
+          <div>Contributed By: <font color='#341f97'>${userName}</font></div>
+          <hr/>
+          <div id="lyricsPreviewContainer" class="unselectable">
+            ${parsedLyrics}
+          </div>
+          <div id="youtubeVideo" data-toggle="tooltip" data-placement="top" title="Click to play video"  onclick="playVideo()"><img src="images/if_youtube_317714.png" alt="youtube"/></div>
+        
+        </div>
+        <div id="videoContainer">
+        <div class="embed-responsive embed-responsive-16by9 videos-container">
+            <iframe class="embed-responsive-item" src="${youtubeLink}" allowfullscreen></iframe>
+        </div>
+        </div>
+        <div class="modal-footer">
+        <button type="submit" class="btn btn-primary">Submit Lyrics</button>
+        <button class="btn btn-secondary" data-dismiss="modal">Back</button>
+        </div>
+      
+        </div>
+        </div>
+        </div>
+       `
+     }
 
-
-  
+    }
+    else{
+      alert('Please Log in!');
+    }
+    
+  })
+}
+function playVideo(){
+  document.getElementById('videoContainer').style.display = 'block';
 }
 
 

@@ -44,12 +44,32 @@
     border: 1px solid #7c7c7c;
     padding: 8px;
     border-radius: 5px;
+    
 }
 #artistNameModal{
     position: absolute;
     left: 60px;
     top: 25px;
 }
+#youtubeVideo{
+    position: absolute;
+   right: 20px;
+   top: 216px;
+   cursor: pointer;
+}
+
+#youtubeVideo img{
+    width:40px;
+  
+
+}
+
+#videoContainer{
+   display: none; 
+    margin: 0 10px 10px 10px;
+    border-radius: 8px;
+}
+
 
 .unselectable {
     -webkit-touch-callout: none;
