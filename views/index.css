@@ -1,6 +1,9 @@
 body{
     font-family: 'Barlow', sans-serif;
 }
+#show-after-window-load{
+    display: none;
+}
 .main-nav{
     position: relative;
     margin-bottom: 4px !important;
@@ -164,8 +167,8 @@ Sub Header
 /*Loader*/
 #loader-container{
 
-height: 3000px;
-width: 3000px
+height: 100px;
+width: 100px
 }
 
 #loader {
