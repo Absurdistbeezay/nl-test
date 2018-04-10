@@ -233,7 +233,9 @@ function previewLyrics(){
        alert('Please fill the fields first!');
     
      }
+     
      else{
+      
       document.getElementById('previewContainer').innerHTML = `
       <div class="modal" id="myModal">
       <div class="modal-dialog">
@@ -257,7 +259,7 @@ function previewLyrics(){
           <div id="lyricsPreviewContainer" class="unselectable">
             ${parsedLyrics}
           </div>
-          <div id="youtubeVideo" data-toggle="tooltip" data-placement="top" title="Click to play video"  onclick="playVideo()"><img src="images/if_youtube_317714.png" alt="youtube"/></div>
+          <div id="youtubeVideo" data-toggle="tooltip" data-placement="top" title="Click to toggle video"  onclick="playVideo()"><img src="images/if_youtube_317714.png" alt="youtube"/></div>
         
         </div>
         <div id="videoContainer">
@@ -275,6 +277,9 @@ function previewLyrics(){
         </div>
        `
      }
+     if(youtubeLink == ''){
+      document.getElementById('youtubeVideo').style.display = 'none';
+    }
 
     }
     else{
@@ -284,7 +289,13 @@ function previewLyrics(){
   })
 }
 function playVideo(){
-  document.getElementById('videoContainer').style.display = 'block';
+  if(document.getElementById('videoContainer').style.display != 'block'){
+    document.getElementById('videoContainer').style.display = 'block';
+  }
+  else {
+    document.getElementById('videoContainer').style.display = 'none';
+  }
+  
 }
 
 
