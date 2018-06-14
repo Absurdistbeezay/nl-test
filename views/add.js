@@ -1,23 +1,40 @@
 // Initialize Firebase
 var config = {
-  apiKey: "AIzaSyAle0qtETlQfp9uJZGHa896Zbh1lTQzRn4",
-  authDomain: "lyricsform.firebaseapp.com",
-  databaseURL: "https://lyricsform.firebaseio.com",
-  projectId: "lyricsform",
-  storageBucket: "lyricsform.appspot.com",
-  messagingSenderId: "1093692190318"
+  apiKey: "AIzaSyB3pt-YPoCfENqhqTMdEN42HX9z_tj4a7I",
+  authDomain: "flashy-84f3e.firebaseapp.com",
+  databaseURL: "https://flashy-84f3e.firebaseio.com",
+  projectId: "flashy-84f3e",
+  storageBucket: "flashy-84f3e.appspot.com",
+  messagingSenderId: "1035470518401"
+
+  // apiKey: "AIzaSyAle0qtETlQfp9uJZGHa896Zbh1lTQzRn4",
+  // authDomain: "lyricsform.firebaseapp.com",
+  // databaseURL: "https://lyricsform.firebaseio.com",
+  // projectId: "lyricsform",
+  // storageBucket: "lyricsform.appspot.com",
+  // messagingSenderId: "1093692190318"
 };
 firebase.initializeApp(config);
 
+/*
+//Nepali Lyrics Flashy
+ apiKey: "AIzaSyB3pt-YPoCfENqhqTMdEN42HX9z_tj4a7I",
+    authDomain: "flashy-84f3e.firebaseapp.com",
+    databaseURL: "https://flashy-84f3e.firebaseio.com",
+    projectId: "flashy-84f3e",
+    storageBucket: "flashy-84f3e.appspot.com",
+    messagingSenderId: "1035470518401"
+*/
+
 //redirect user
-firebase.auth().onAuthStateChanged(user => {
-  if (user) {
-    //do nothing
-  }
-  if (!user) {
-    window.location = "/nl-test";
-  }
-});
+// firebase.auth().onAuthStateChanged(user => {
+//   if (user) {
+//     //do nothing
+//   }
+//   if (!user) {
+//     window.location = "/nl-test";
+//   }
+// });
 
 //global variables
 const artistInput = document.getElementById("artist");
@@ -39,17 +56,17 @@ function submitForm(e) {
   const artistName = getInput("artist");
   let artistInfoArr = artistInfo(artistName);
   let artistId = '';
-  if(artistInfoArr[0]==undefined){
-   artistId = 'N/A';
+  if (artistInfoArr[0] == undefined) {
+    artistId = 'N/A';
   }
-  else{
+  else {
     artistId = artistInfoArr[0];
   }
-  
+
   let artistImageUrl = '';
-  if(artistInfoArr[1]== undefined){
+  if (artistInfoArr[1] == undefined) {
     artistImageUrl = 'https://firebasestorage.googleapis.com/v0/b/flashy-84f3e.appspot.com/o/artists%2Fnepali_lyrics.png?alt=media&token=04b6f003-16b3-4ba0-9f67-212017cd4609';
-  }else{
+  } else {
     artistImageUrl = artistInfoArr[1];
   }
   const artistName2 = selectedArtistInput.textContent;
@@ -153,7 +170,7 @@ function artistInfo(artistName) {
         artistArr.push(data.child("imageUrl").val());
       });
     });
-  if(artistArr === []){
+  if (artistArr === []) {
     return artistName;
   }
   return artistArr;
@@ -206,8 +223,8 @@ function saveLyrics(arg) {
 
 //preview Lyrics 
 
-function previewLyrics(){
-  
+function previewLyrics() {
+
   const name = getInput("songTitle");
   const lyrics = getInput('lyrics');
   const genre = getInput('genre');
@@ -216,27 +233,27 @@ function previewLyrics(){
   let artistInfoArr = artistInfo(artistName);
   let artistImage = '';
   const youtubeLink = getInput('movieLink');
- 
+
 
   firebase.auth().onAuthStateChanged(currentUser => {
     if (currentUser) {
       const userName = currentUser.displayName;
 
-      if(artistInfoArr[1] == undefined){
+      if (artistInfoArr[1] == undefined) {
         artistImage = 'https://firebasestorage.googleapis.com/v0/b/flashy-84f3e.appspot.com/o/artists%2Fnepali_lyrics.png?alt=media&token=04b6f003-16b3-4ba0-9f67-212017cd4609';
       }
-      else{
+      else {
         artistImage = artistInfoArr[1];
       }
-    
-     if((name && lyrics && artistName)==''){
-       alert('Please fill the fields first!');
-    
-     }
-     
-     else{
-      
-      document.getElementById('previewContainer').innerHTML = `
+
+      if ((name && lyrics && artistName) == '') {
+        alert('Please fill the fields first!');
+
+      }
+
+      else {
+
+        document.getElementById('previewContainer').innerHTML = `
       <div class="modal" id="myModal">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -264,7 +281,7 @@ function previewLyrics(){
         </div>
         <div id="videoContainer">
         <div class="embed-responsive embed-responsive-16by9 videos-container">
-            <iframe class="embed-responsive-item" src="${youtubeLink}" allowfullscreen></iframe>
+            <iframe class="embed-responsive-item" src="https://youtube.com/embed/${youtubeLink}" allowfullscreen></iframe>
         </div>
         </div>
         <div class="modal-footer">
@@ -276,27 +293,33 @@ function previewLyrics(){
         </div>
         </div>
        `
-     }
-     if(youtubeLink == ''){
-      document.getElementById('youtubeVideo').style.display = 'none';
-    }
+      }
+      if (youtubeLink == '') {
+        document.getElementById('youtubeVideo').style.display = 'none';
+      }
 
     }
-    else{
+    else {
       alert('Please Log in!');
     }
-    
+
   })
 }
-function playVideo(){
-  if(document.getElementById('videoContainer').style.display != 'block'){
+function playVideo() {
+  if (document.getElementById('videoContainer').style.display != 'block') {
     document.getElementById('videoContainer').style.display = 'block';
   }
   else {
     document.getElementById('videoContainer').style.display = 'none';
   }
-  
+
 }
+
+
+//test for primary arstist
+//youtube link id only DONE!
+
+
 
 
 
