@@ -6,25 +6,8 @@ var config = {
   projectId: "flashy-84f3e",
   storageBucket: "flashy-84f3e.appspot.com",
   messagingSenderId: "1035470518401"
-
-  // apiKey: "AIzaSyAle0qtETlQfp9uJZGHa896Zbh1lTQzRn4",
-  // authDomain: "lyricsform.firebaseapp.com",
-  // databaseURL: "https://lyricsform.firebaseio.com",
-  // projectId: "lyricsform",
-  // storageBucket: "lyricsform.appspot.com",
-  // messagingSenderId: "1093692190318"
 };
 firebase.initializeApp(config);
-
-/*
-//Nepali Lyrics Flashy
- apiKey: "AIzaSyB3pt-YPoCfENqhqTMdEN42HX9z_tj4a7I",
-    authDomain: "flashy-84f3e.firebaseapp.com",
-    databaseURL: "https://flashy-84f3e.firebaseio.com",
-    projectId: "flashy-84f3e",
-    storageBucket: "flashy-84f3e.appspot.com",
-    messagingSenderId: "1035470518401"
-*/
 
 //redirect user
 // firebase.auth().onAuthStateChanged(user => {
@@ -72,7 +55,7 @@ function submitForm(e) {
   const artistName2 = selectedArtistInput.textContent;
   const genre = getInput("genre");
   const movieName = getInput("movieName");
-  const youtubeVideoId = getInput("movieLink");
+  const youtubeVideoId = `https://youtube.com/embed/${getInput("movieLink")}`;
   let contentInput = getInput("lyrics");
   const content = parseToHtml(contentInput);
   const hasCords = checkBox("cords");
@@ -233,6 +216,7 @@ function previewLyrics() {
   let artistInfoArr = artistInfo(artistName);
   let artistImage = '';
   const youtubeLink = getInput('movieLink');
+  
 
 
   firebase.auth().onAuthStateChanged(currentUser => {
