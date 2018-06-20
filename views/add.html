@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
     <!-- Local CSS -->
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="index.css">
@@ -17,22 +19,20 @@
 
     <!--Firebase-->
     <script src="https://www.gstatic.com/firebasejs/4.10.0/firebase.js"></script>
-     <!--jQuery-->
-     <script
-     src="https://code.jquery.com/jquery-3.3.1.js"
-     integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-     crossorigin="anonymous"></script>
+    <!--jQuery-->
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
     <script src="../views/functions/loader.js"></script>
 
     <title>Lyrics</title>
 </head>
+
 <body>
- 
+
     <div class="container">
-       
+
         <!--Nav Bar-->
         <nav class="navbar navbar-expand-sm navbar-primary bg-primary mb-3 nav-height main-nav container">
-            
+
             <a class="navbar-brand" id="brand-logo" href="https://absurdistbeezay.github.io/nl-test">
                 <img src="https://firebasestorage.googleapis.com/v0/b/flashy-84f3e.appspot.com/o/artists%2Fnepali_lyrics.png?alt=media&token=04b6f003-16b3-4ba0-9f67-212017cd4609"
                     alt="">
@@ -45,116 +45,159 @@
             <form class="form-inline my-2 my-lg-0 search-bar">
                 <input type="text" class="form-control mr-sm-2" placeholder="Search Nepali Lyrics">
                 <button class="btn btn-outline-light my-2 my-sm-0 text-white">Search</button>
-                <a class="search-icon"><i class="fas fa-search search-glass"></i></a>
+                <a class="search-icon">
+                    <i class="fas fa-search search-glass"></i>
+                </a>
             </form>
 
-    </nav>
-    <!--Nav Bar Ends-->
-    <div id="loader-container">
-        <div id="loader"></div>
-        
-</div>
-<div id="show-after-window-load">
-    <h1>Add Songs</h1>
-    <hr>
+        </nav>
+        <!--Nav Bar Ends-->
+        <div id="loader-container">
+            <div id="loader"></div>
 
-    <form id ="lyricsForm">
-    <h3>Lyrics Editor</h3>
-        <div class="form-group row">
-            <label class="col-sm-3 col-form-label">Song Title</label>
-            <div class="col-sm-9">
-                <input type="text" class="form-control" id="songTitle" required>
-            </div>
         </div>
-        <div class="form-group row">
-                <label class="col-sm-3 col-form-label">Album</label>
-                <div class="col-sm-9">
-                    <input type="text" class="form-control" id="album">
+        <div id="show-after-window-load">
+            <h1>Add Songs</h1>
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                Add New Artist
+            </button>
+            <hr>
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Add New Artist</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="newArtistForm">
+                                <div>
+                                    <label>Artist Name</label>
+                                    <div>
+                                        <input type="text" id="newArtistName">
+                                    </div>
+                                </div>
+                                <br>
+                                <div>
+                                    <label>Image URL</label>
+                                    <div>
+                                        <input type="text" id="newArtistImageUrl">
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                    <button type="submit" class="btn btn-primary">Add New Artist</button>
+                                </div>
+                            </form>
+                        </div>                      
+                    </div>
                 </div>
             </div>
-        <div class="form-group row btn-inside">
-                <label class="col-sm-3 col-form-label">Artist</label>
-                <div class="form-group col-sm-9 artist-input">
-                    <input class="form-control" id="artist" list="artistList" placeholder="Type to search artist...">
-                    <datalist id="artistList">  
 
-                    </datalist>
-                    
-
-                    <a id="add" onclick="addArtist()">Add Next Artist</a>
-                    <div id="selectedArtist"></div>
-                        
-                    
-                </div>             
-        </div>
-        <div class="form-group row">
-                <label class="col-sm-3 col-form-label">Genre</label>
-                <div class="col-sm-9">
-                    <select class="custom-select" id="genre">
-                        <option selected>None</option>
-                        <option value="Folk">Folk</option>
-                        <option value="Pop">Pop</option>
-                        <option value="Rock">Rock</option>
-                        <option value="Comedy">Comedy</option>
-                        <option value="Gajal">Gajal</option>
-                        <option value="Hip-Hop">Hip Hop</option>
-                        <option value="Lok-Dohori">Lok Dohori</option>
-                        <option value="Adhunik">Adhunik</option>
-                        <option value="Movie">Movie</option>
-                        <option value="Oldies">Oldies</option>
-                        <option value="Patriotic">Patriotic</option>
-                        <option value="Rap">Rap</option>
-                        <option value="Remix">Remix</option>
-                        <option value="Romantic">Romantic</option>
-                        <option value="Sentimental">Sentimental</option>
-                    </select>
+            <form id="lyricsForm">
+                <h3>Lyrics Editor</h3>
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Song Title</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="songTitle" required>
+                    </div>
                 </div>
-                
-        </div>
-        <div class="form-group row">
-                <label class="col-sm-3 col-form-label">Movie Name</label>
-                <div class="col-sm-9">
-                    <input type="text" class="form-control" id="movieName">
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Album</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="album">
+                    </div>
                 </div>
-        </div>
-        <div class="form-group row">
-                <label class="col-sm-3 col-form-label">YouTube Link</label>
-                <div class="col-sm-9">
-                    <input type="text" class="form-control" id="movieLink" placeholder="Enter youtube ID here..">
+                <div class="form-group row btn-inside">
+                    <label class="col-sm-3 col-form-label">Artist</label>
+                    <div class="form-group col-sm-9 artist-input">
+                        <input class="form-control" id="artist" list="artistList" placeholder="Type to search artist...">
+                        <datalist id="artistList">
+
+                        </datalist>
+
+
+                        <a id="add" onclick="addArtist()">Add Next Artist</a>
+                        <div id="selectedArtist"></div>
+
+
+                    </div>
                 </div>
-        </div>
-        <div class="form-group row">
-                <label class="col-sm-3 col-form-label">Lyrics</label>
-                <div class="col-sm-9">
-                    <textarea id="lyrics" cols="30" rows="10" class="form-control" required></textarea>
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Genre</label>
+                    <div class="col-sm-9">
+                        <select class="custom-select" id="genre">
+                            <option selected>None</option>
+                            <option value="Folk">Folk</option>
+                            <option value="Pop">Pop</option>
+                            <option value="Rock">Rock</option>
+                            <option value="Comedy">Comedy</option>
+                            <option value="Gajal">Gajal</option>
+                            <option value="Hip-Hop">Hip Hop</option>
+                            <option value="Lok-Dohori">Lok Dohori</option>
+                            <option value="Adhunik">Adhunik</option>
+                            <option value="Movie">Movie</option>
+                            <option value="Oldies">Oldies</option>
+                            <option value="Patriotic">Patriotic</option>
+                            <option value="Rap">Rap</option>
+                            <option value="Remix">Remix</option>
+                            <option value="Romantic">Romantic</option>
+                            <option value="Sentimental">Sentimental</option>
+                        </select>
+                    </div>
+
                 </div>
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Movie Name</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="movieName">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">YouTube Link</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="movieLink" placeholder="Enter youtube ID here..">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Lyrics</label>
+                    <div class="col-sm-9">
+                        <textarea id="lyrics" cols="30" rows="10" class="form-control" required></textarea>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="cords" class="col-sm-3 col-form-label">Contain Chords?</label>
+                    <div class="col-sm-4" id="chordDiv">
+                        <input type="checkbox" id="cords" class="form-check-input col-sm-9">
+                    </div>
+
+
+                </div>
+
+                <div class="form-group row">
+                    <a class="btn btn-primary btn-lg btn-block text-white" data-toggle="modal" data-target="#myModal" onclick="previewLyrics()">Preview</a>
+                </div>
+                <div id="previewContainer"></div>
+
+            </form>
+
+
         </div>
-        <div class="form-group row">
-                <label for="cords" class="col-sm-3 col-form-label">Contain Chords?</label>
-            <div class="col-sm-4" id="chordDiv">
-                <input type="checkbox" id="cords" class="form-check-input col-sm-9">
-            </div>
+    </div>
 
-            
-        </div>
-      
-        <div class="form-group row">
-                <a class="btn btn-primary btn-lg btn-block text-white" data-toggle="modal" data-target="#myModal" onclick="previewLyrics()">Preview</a>
-        </div>  
-        <div id="previewContainer"></div>
-        
-    </form>
+    <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
+        crossorigin="anonymous"></script>
 
-    
-</div>
-</div>
-
-<!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
-
-<script src="./add.js"></script>
-<script src="./functions/parseToHtml.js"></script>
+    <script src="./add.js"></script>
+    <script src="./functions/parseToHtml.js"></script>
 
 </body>
+
 </html>

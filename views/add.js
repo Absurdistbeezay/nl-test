@@ -303,8 +303,23 @@ function playVideo() {
 //test for primary arstist
 //youtube link id only DONE!
 
+//add new artist
 
 
+ document.getElementById('newArtistForm').addEventListener('submit', addNewArtist)
+
+ function addNewArtist(){
+   const newArtistName = getInput('newArtistName');
+   const newArtistImgUrl = getInput('newArtistImageUrl');
+  
+   const newArtistInfo = {
+     name: newArtistName,
+     imageUrl: newArtistImgUrl,
+     viewCount: 0
+   }
+
+   artistRef.push(newArtistInfo);
+ }
 
 
 
