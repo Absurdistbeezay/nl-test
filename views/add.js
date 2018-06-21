@@ -9,15 +9,15 @@ var config = {
 };
 firebase.initializeApp(config);
 
-//redirect user
-// firebase.auth().onAuthStateChanged(user => {
-//   if (user) {
-//     //do nothing
-//   }
-//   if (!user) {
-//     window.location = "/nl-test";
-//   }
-// });
+// redirect user
+firebase.auth().onAuthStateChanged(user => {
+  if (user) {
+    //do nothing
+  }
+  if (!user) {
+    window.location = "/nl-test";
+  }
+});
 
 //global variables
 const artistInput = document.getElementById("artist");
