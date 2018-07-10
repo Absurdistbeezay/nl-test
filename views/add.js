@@ -194,7 +194,8 @@ function saveLyrics(arg) {
     artistId: arg.artistId,
     artistImageUrl: arg.artistImageUrl,
     likeCount: 0,
-    viewCount: 0
+    viewCount: 0,
+    favouriteCount: 0
   };
 
   if (arg.artistName2 !== "") {
