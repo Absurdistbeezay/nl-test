@@ -55,7 +55,7 @@ function submitForm(e) {
   const artistName2 = selectedArtistInput.textContent;
   const genre = getInput("genre");
   const movieName = getInput("movieName");
-  const youtubeVideoId = `https://youtube.com/embed/${getInput("movieLink")}`;
+  const youtubeVideoId = `${getInput("movieLink")}`;
   let contentInput = getInput("lyrics");
   const content = parseToHtml(contentInput);
   const hasCords = checkBox("cords");
