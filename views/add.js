@@ -55,11 +55,11 @@ function submitForm(e) {
   const artistName2 = selectedArtistInput.textContent;
   const genre = getInput("genre");
   const movieName = getInput("movieName");
-  const youtubeVideoId = `${getInput("movieLink")}`;
+  const youTubeVideoId = `${getInput("movieLink")}`;
   let contentInput = getInput("lyrics");
   const content = parseToHtml(contentInput);
   const hasCords = checkBox("cords");
-  const dateCreated = Math.floor(Date.now() / 10);
+  const dateCreated = Math.floor(Date.now());
 
   //get user info
   firebase.auth().onAuthStateChanged(currentUser => {
@@ -75,7 +75,7 @@ function submitForm(e) {
         artistName2,
         genre,
         movieName,
-        youtubeVideoId,
+        youTubeVideoId,
         content,
         hasCords,
         addedById,
@@ -185,7 +185,7 @@ function saveLyrics(arg) {
     artistName: arg.artistName,
     genre: arg.genre,
     movieName: arg.movieName,
-    youtubeVideoId: arg.youtubeVideoId,
+    youTubeVideoId: arg.youTubeVideoId,
     content: arg.content,
     hasCords: arg.hasCords,
     addedById: arg.addedById,
